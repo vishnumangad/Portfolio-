@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ORBIT X TOOLS</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#06070d;
+overflow-x:hidden;
+color:white;
+}
+
+/* BACKGROUND */
+
+.bg{
+position:fixed;
+width:100%;
+height:100%;
+background:
+radial-gradient(circle at top left,#ff006655,transparent 30%),
+radial-gradient(circle at bottom right,#00f0ff33,transparent 30%),
+radial-gradient(circle at center,#7b00ff22,transparent 40%);
+z-index:-2;
+}
+
+.grid{
+position:fixed;
+width:100%;
+height:100%;
+background-image:
+linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+background-size:40px 40px;
+z-index:-1;
+}
+
+/* NAV */
+
+nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:18px 6%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(0,0,0,0.45);
+backdrop-filter:blur(20px);
+border-bottom:1px solid rgba(255,255,255,0.08);
+z-index:999;
+}
+
+.logo{
+font-family:'Orbitron',sans-serif;
+font-size:32px;
+font-weight:900;
+color:#00f0ff;
+letter-spacing:2px;
+}
+
+nav button{
+padding:14px 28px;
+border:none;
+border-radius:50px;
+background:linear-gradient(45deg,#00f0ff,#ff00aa);
+color:white;
+font-weight:700;
+cursor:pointer;
+cursor:pointer;
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:140px 6% 80px;
+}
+
+.hero-content h1{
+font-family:'Orbitron',sans-serif;
+font-size:90px;
+line-height:1;
+margin-bottom:25px;
+text-transform:uppercase;
+}
+
+.hero-content h1 span{
+color:#00f0ff;
+text-shadow:0 0 20px #00f0ff;
+}
+
+.hero-content p{
+max-width:750px;
+margin:auto;
+line-height:2;
+font-size:18px;
+opacity:0.8;
+}
+
+.hero-buttons{
+margin-top:40px;
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.hero-buttons button{
+padding:18px 36px;
+border:none;
+border-radius:50px;
+font-size:16px;
+font-weight:700;
+cursor:pointer;
+transition:.4s;
+}
+
+.primary{
+background:linear-gradient(45deg,#00f0ff,#7b00ff);
+color:white;
+box-shadow:0 0 25px #00f0ff55;
+}
+
+.secondary{
+background:rgba(255,255,255,0.06);
+border:1px solid rgba(255,255,255,0.1);
+color:white;
+}
+
+.hero-buttons button:hover{
+transform:translateY(-6px) scale(1.03);
+}
+
+/* SECTION */
+
+.section{
+padding:60px 6%;
+}
+
+.title{
+font-family:'Orbitron',sans-serif;
+font-size:58px;
+text-align:center;
+margin-bottom:15px;
+}
+
+.subtitle{
+text-align:center;
+max-width:700px;
+margin:auto;
+line-height:2;
+opacity:0.7;
+margin-bottom:60px;
+}
+
+/* TOOLS */
+
+.tools-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:30px;
+}
+
+.tool{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:30px;
+padding:30px;
+backdrop-filter:blur(18px);
+transition:1s;
+position:relative;
+overflow:hidden;
+
+opacity:0;
+transform:translateY(120px);
+}
+
+.tool.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.tool::before{
+content:'';
+position:absolute;
+width:200px;
+height:200px;
+background:#00f0ff11;
+border-radius:50%;
+top:-80px;
+right:-80px;
+}
+
+.tool:hover{
+transform:translateY(-12px);
+box-shadow:0 0 35px rgba(0,240,255,0.15);
+}
+
+.tool-icon{
+font-size:60px;
+margin-bottom:20px;
+}
+
+.tool h2{
+font-size:28px;
+margin-bottom:15px;
+}
+
+.tool p{
+line-height:1.8;
+opacity:0.75;
+margin-bottom:20px;
+}
+
+.tool input,
+.tool textarea{
+width:100%;
+padding:16px;
+border:none;
+outline:none;
+border-radius:18px;
+background:#0f111a;
+color:white;
+margin-bottom:15px;
+font-size:15px;
+}
+
+.tool button{
+width:100%;
+padding:15px;
+border:none;
+border-radius:18px;
+background:linear-gradient(45deg,#00f0ff,#7b00ff);
+color:white;
+font-weight:700;
+cursor:pointer;
+transition:.4s;
+}
+
+.tool button:hover{
+transform:scale(1.02);
+}
+
+.result{
+margin-top:18px;
+font-size:15px;
+line-height:1.7;
+word-wrap:break-word;
+opacity:0.9;
+}
+
+/* FOOTER */
+
+footer{
+padding:35px;
+text-align:center;
+margin-top:80px;
+background:#02030a;
+opacity:0.7;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.hero-content h1{
+font-size:56px;
+}
+
+.title{
+font-size:38px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="bg"></div>
+<div class="grid"></div>
+
+<!-- NAV -->
+
+<nav>
+
+<div class="logo">ORBIT X</div>
+
+<button onclick="launchTools()">
+SMART TOOLS
+</button>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>
+NXTGEN <span>Tools</span>
+</h1>
+
+<p>
+A toolbox packed with cyber utilities and smart tools.
+</p>
+
+<div class="hero-buttons">
+
+<button class="primary" onclick="launchTools()">
+Launch Tools
+</button>
+
+<button class="secondary" onclick="launchTools()">
+Explore More
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- TOOLS -->
+
+<section class="section">
+
+<h1 class="title">
+10 Smart Utilities
+</h1>
+
+<p class="subtitle">
+Fast, futuristic and fully functional tools in one webpage.
+</p>
+
+<div class="tools-grid">
+
+<!-- TOOL -->
+
+<div class="tool">
+<div class="tool-icon">🔐</div>
+<h2>Password Generator</h2>
+<p>Create strong passwords instantly.</p>
+<button onclick="generatePassword()">Generate</button>
+<div class="result" id="passwordResult"></div>
+</div>
+
+<div class="tool">
+<div class="tool-icon">⚖️</div>
+<h2>BMI Calculator</h2>
+
+<input type="number" id="weight" placeholder="Weight">
+<input type="number" id="height" placeholder="Height">
+
+<button onclick="calculateBMI()">Calculate</button>
+
+<div class="result" id="bmiResult"></div>
+</div>
+
+<div class="tool">
+<div class="tool-icon">🎂</div>
+<h2>Age Calculator</h2>
+
+<input type="date" id="birthDate">
+
+<button onclick="calculateAge()">Calculate</button>
+
+<div class="result" id="ageResult"></div>
+</div>
+
+<div class="tool">
+<div class="tool-icon">🎨</div>
+<h2>Color Generator</h2>
+
+<button onclick="generateColor()">Generate Color</button>
+
+<div class="result" id="colorResult"></div>
+</div>
+
+<div class="tool">
+<div class="tool-icon">📄</div>
+<h2>Word Counter</h2>
+
+<textarea id="wordInput"></textarea>
+
+<button onclick="countWords()">Count</button>
+
+<div class="result" id="wordResult"></div>
+</div>
+
+<div class="tool">
+<div class="tool-icon">📏</div>
+<h2>CM → Inches</h2>
+
+<input type="number" id="cmInput">
+
+<button onclick="convertCM()">Convert</button>
+
+<div class="result" id="cmResult"></div>
+</div>
+
+<div class="tool">
+<div class="tool-icon">💡</div>
+<h2>Motivation Generator</h2>
+
+<button onclick="generateQuote()">Generate</button>
+
+<div class="result" id="quoteResult"></div>
+</div>
+
+<div class="tool">
+<div class="tool-icon">⌨️</div>
+<h2>Typing Speed</h2>
+
+<textarea id="typingInput"></textarea>
+
+<button onclick="checkTyping()">Check</button>
+
+<div class="result" id="typingResult"></div>
+</div>
+
+<div class="tool">
+<div class="tool-icon">📝</div>
+<h2>Quick Notes</h2>
+
+<textarea id="notesText"></textarea>
+
+<button onclick="saveNote()">Save</button>
+
+<div class="result" id="notesResult"></div>
+</div>
+
+<div class="tool">
+<div class="tool-icon">⏰</div>
+<h2>Countdown Timer</h2>
+
+<input type="number" id="timerInput">
+
+<button onclick="startTimer()">Start</button>
+
+<div class="result" id="timerResult"></div>
+</div>
+
+</div>
+
+</section>
+<marquee background="red">Disclaimer:This website is meant only for the demonstration of web designs made by me and is not being deployed or given backend support to function!</marquee>
+<footer>
+© 2026 ORBIT X • Smart Utilities
+</footer>
+
+<script>
+
+/* LAUNCH TOOLS */
+
+function launchTools(){
+
+document.querySelector('.section').scrollIntoView({
+behavior:'smooth'
+});
+
+const tools=document.querySelectorAll('.tool');
+
+tools.forEach((tool,index)=>{
+
+setTimeout(()=>{
+
+tool.classList.add('show');
+
+},index*120);
+
+});
+
+}
+
+/* PASSWORD */
+
+function generatePassword(){
+
+let chars='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%';
+
+let pass='';
+
+for(let i=0;i<14;i++){
+
+pass+=chars[Math.floor(Math.random()*chars.length)];
+
+}
+
+document.getElementById("passwordResult").innerHTML=pass;
+
+}
+
+/* BMI */
+
+function calculateBMI(){
+
+let w=parseFloat(document.getElementById("weight").value);
+
+let h=parseFloat(document.getElementById("height").value)/100;
+
+if(!w || !h){
+
+document.getElementById("bmiResult").innerHTML='Enter valid details';
+
+return;
+
+}
+
+let bmi=(w/(h*h)).toFixed(1);
+
+document.getElementById("bmiResult").innerHTML=`BMI: ${bmi}`;
+
+}
+
+/* AGE */
+
+function calculateAge(){
+
+let birth=new Date(document.getElementById("birthDate").value);
+
+if(!birth.getTime()){
+
+document.getElementById("ageResult").innerHTML='Select date';
+
+return;
+
+}
+
+let today=new Date();
+
+let age=today.getFullYear()-birth.getFullYear();
+
+document.getElementById("ageResult").innerHTML=`Age: ${age}`;
+
+}
+
+/* COLOR */
+
+function generateColor(){
+
+let color=
+'#'+Math.floor(Math.random()*16777215).toString(16);
+
+document.querySelector('.bg').style.background=`
+radial-gradient(circle at top left, ${color}88, transparent 30%),
+radial-gradient(circle at bottom right, ${color}55, transparent 30%),
+radial-gradient(circle at center, ${color}33, transparent 40%)
+`;
+
+document.getElementById("colorResult").innerHTML=
+`Generated Color: ${color}`;
+
+}
+
+/* WORD COUNT */
+
+function countWords(){
+
+let text=document.getElementById("wordInput").value;
+
+let words=text.trim().split(/\s+/).filter(Boolean).length;
+
+let chars=text.length;
+
+document.getElementById("wordResult").innerHTML=
+`Words: ${words}<br>Characters: ${chars}`;
+
+}
+
+/* CM */
+
+function convertCM(){
+
+let cm=parseFloat(document.getElementById("cmInput").value);
+
+if(isNaN(cm)){
+
+document.getElementById("cmResult").innerHTML='Enter valid number';
+
+return;
+
+}
+
+let inch=(cm/2.54).toFixed(2);
+
+document.getElementById("cmResult").innerHTML=
+`${cm} cm = ${inch} inches`;
+
+}
+
+/* QUOTES */
+
+function generateQuote(){
+
+const quotes=[
+
+'Dream big and dare to fail.',
+'Success starts with discipline.',
+'Believe in your potential.',
+'Great things take time.',
+'Your future is created today.'
+
+];
+
+let random=quotes[Math.floor(Math.random()*quotes.length)];
+
+document.getElementById("quoteResult").innerHTML=random;
+
+}
+
+/* TYPING */
+
+function checkTyping(){
+
+let text=document.getElementById("typingInput").value.trim();
+
+if(text.length===0){
+
+document.getElementById("typingResult").innerHTML='Type something';
+
+return;
+
+}
+
+let words=text.split(/\s+/).length;
+
+let wpm=words*5;
+
+document.getElementById("typingResult").innerHTML=
+`${wpm} WPM`;
+
+}
+
+/* NOTES */
+
+function saveNote(){
+
+let note=document.getElementById("notesText").value;
+
+localStorage.setItem("orbitNote",note);
+
+document.getElementById("notesResult").innerHTML=
+'Note Saved';
+
+}
+
+/* TIMER */
+
+function startTimer(){
+
+let time=parseInt(document.getElementById("timerInput").value);
+
+let result=document.getElementById("timerResult");
+
+if(isNaN(time) || time<=0){
+
+result.innerHTML='Enter valid seconds';
+
+return;
+
+}
+
+let interval=setInterval(()=>{
+
+time--;
+
+result.innerHTML=`${time}s remaining`;
+
+if(time<=0){
+
+clearInterval(interval);
+
+result.innerHTML='⏰ Time Up!';
+
+}
+
+},1000);
+
+}
+
+</script>
+
+</body>
+</html>

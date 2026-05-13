@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LuxeAura Beauty</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Cormorant+Garamond:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Montserrat',sans-serif;
+background:#fff7fb;
+color:#2d1b2e;
+overflow-x:hidden;
+}
+
+/* GLOW */
+
+body::before{
+content:'';
+position:fixed;
+width:500px;
+height:500px;
+background:#ff4fa333;
+filter:blur(120px);
+right:-150px;
+top:-100px;
+z-index:-1;
+}
+
+body::after{
+content:'';
+position:fixed;
+width:400px;
+height:400px;
+background:#ff9ed633;
+filter:blur(120px);
+left:-120px;
+bottom:-100px;
+z-index:-1;
+}
+
+/* NAVBAR */
+
+nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:18px 7%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(255,255,255,0.75);
+backdrop-filter:blur(20px);
+z-index:1000;
+border-bottom:1px solid #ffd6ea;
+}
+
+.logo{
+font-family:'Cormorant Garamond',serif;
+font-size:42px;
+font-weight:700;
+color:#ff2f92;
+}
+
+.nav-links{
+display:flex;
+gap:30px;
+list-style:none;
+}
+
+.nav-links a{
+text-decoration:none;
+color:#4c2f4f;
+font-weight:600;
+position:relative;
+}
+
+.nav-links a::after{
+content:'';
+position:absolute;
+left:0;
+bottom:-5px;
+width:0;
+height:2px;
+background:#ff2f92;
+transition:.4s;
+}
+
+.nav-links a:hover::after{
+width:100%;
+}
+
+.icons{
+display:flex;
+gap:20px;
+align-items:center;
+}
+
+#cartIcon{
+background:white;
+padding:12px 18px;
+border-radius:40px;
+box-shadow:0 10px 30px #ffbfd944;
+font-weight:700;
+cursor:pointer;
+}
+
+.menu-toggle{
+display:none;
+font-size:30px;
+cursor:pointer;
+color:#ff2f92;
+}
+
+/* HERO */
+
+.hero{
+min-height:100vh;
+display:grid;
+grid-template-columns:1fr 1fr;
+align-items:center;
+padding:120px 7% 60px;
+gap:40px;
+}
+
+.hero-text h1{
+font-size:82px;
+line-height:1;
+font-family:'Cormorant Garamond',serif;
+margin-bottom:25px;
+}
+
+.hero-text h1 span{
+color:#ff2f92;
+}
+
+.hero-text p{
+font-size:18px;
+line-height:1.9;
+max-width:600px;
+color:#664768;
+}
+
+.hero-btns{
+margin-top:35px;
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.hero-btns button{
+padding:16px 34px;
+border:none;
+border-radius:50px;
+font-size:16px;
+font-weight:700;
+cursor:pointer;
+transition:.4s;
+}
+
+.primary{
+background:linear-gradient(45deg,#ff2f92,#ff77b7);
+color:white;
+box-shadow:0 15px 35px #ff77b755;
+}
+
+.secondary{
+background:white;
+color:#ff2f92;
+border:2px solid #ff9bc9;
+}
+
+.hero-btns button:hover{
+transform:translateY(-5px);
+}
+
+.hero-image img{
+width:100%;
+border-radius:40px;
+box-shadow:0 30px 60px #ffbfd955;
+animation:float 5s infinite ease-in-out;
+}
+
+@keyframes float{
+50%{
+transform:translateY(-20px);
+}
+}
+
+/* SECTION */
+
+.section{
+padding:80px 7%;
+}
+
+.title{
+font-family:'Cormorant Garamond',serif;
+font-size:60px;
+text-align:center;
+margin-bottom:15px;
+}
+
+.subtitle{
+text-align:center;
+max-width:700px;
+margin:auto;
+line-height:1.9;
+color:#7a5c7a;
+margin-bottom:60px;
+}
+
+/* SEARCH */
+
+.search-area{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+margin-bottom:50px;
+}
+
+.search-area input,
+.search-area select{
+padding:18px 24px;
+border:none;
+border-radius:50px;
+background:white;
+box-shadow:0 10px 30px #ffbfd933;
+font-size:15px;
+outline:none;
+}
+
+.search-area input{
+width:450px;
+max-width:100%;
+}
+
+/* PRODUCTS */
+
+.product-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+}
+
+.product-card{
+background:white;
+border-radius:35px;
+overflow:hidden;
+box-shadow:0 20px 40px #ffbfd944;
+transition:.5s;
+position:relative;
+}
+
+.product-card:hover{
+transform:translateY(-12px);
+}
+
+.badge{
+position:absolute;
+top:18px;
+left:18px;
+padding:8px 14px;
+background:#ff2f92;
+color:white;
+font-size:12px;
+border-radius:30px;
+font-weight:700;
+z-index:2;
+}
+
+.product-card img{
+width:100%;
+height:270px;
+object-fit:cover;
+}
+
+.product-content{
+padding:24px;
+}
+
+.product-top{
+display:flex;
+justify-content:space-between;
+gap:10px;
+align-items:center;
+margin-bottom:10px;
+}
+
+.product-top h2{
+font-size:22px;
+}
+
+.price{
+font-size:20px;
+font-weight:800;
+color:#ff2f92;
+}
+
+.product-content p{
+line-height:1.8;
+color:#6c536f;
+margin-bottom:18px;
+font-size:14px;
+}
+
+.tags{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-bottom:20px;
+}
+
+.tags span{
+padding:8px 12px;
+background:#fff0f6;
+border-radius:30px;
+font-size:12px;
+font-weight:600;
+color:#ff2f92;
+}
+
+.buy-btn{
+width:100%;
+padding:15px;
+border:none;
+border-radius:20px;
+background:linear-gradient(45deg,#ff2f92,#ff77b7);
+color:white;
+font-weight:700;
+font-size:15px;
+cursor:pointer;
+}
+
+/* CART PANEL */
+
+.cart-panel{
+position:fixed;
+top:0;
+right:-100%;
+width:350px;
+height:100%;
+background:white;
+z-index:2000;
+padding:30px;
+overflow-y:auto;
+transition:.5s;
+box-shadow:-10px 0 40px rgba(0,0,0,0.1);
+}
+
+.cart-panel.active{
+right:0;
+}
+
+.cart-panel h2{
+margin-bottom:20px;
+color:#ff2f92;
+}
+
+.cart-item{
+padding:15px 0;
+border-bottom:1px solid #eee;
+}
+
+.close-cart{
+background:#ff2f92;
+color:white;
+border:none;
+padding:12px 18px;
+border-radius:15px;
+cursor:pointer;
+margin-bottom:20px;
+}
+
+/* FOOTER */
+
+footer{
+padding:35px;
+text-align:center;
+background:#ffe8f3;
+margin-top:80px;
+color:#7a5c7a;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.hero{
+grid-template-columns:1fr;
+text-align:center;
+padding-top:140px;
+}
+
+.hero-text h1{
+font-size:56px;
+}
+
+.title{
+font-size:42px;
+}
+
+nav{
+padding:18px 5%;
+}
+
+.nav-links{
+position:absolute;
+top:100%;
+left:0;
+width:100%;
+background:rgba(255,255,255,0.95);
+backdrop-filter:blur(20px);
+flex-direction:column;
+padding:25px;
+display:none;
+gap:25px;
+border-bottom:1px solid #ffd6ea;
+}
+
+.nav-links.active{
+display:flex;
+}
+
+.menu-toggle{
+display:block;
+}
+
+.cart-panel{
+width:100%;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="logo">LuxeAura</div>
+
+<ul class="nav-links">
+
+<li><a href="#products">Products</a></li>
+<li><a href="#products">Trending</a></li>
+<li><a href="#products">Skincare</a></li>
+<li><a href="#products">Makeup</a></li>
+
+</ul>
+
+<div class="icons">
+
+<div id="cartIcon" onclick="openCart()">
+🛍️ <span id="cartCount">0</span>
+</div>
+
+<div class="menu-toggle" onclick="toggleMenu()">
+☰
+</div>
+
+</div>
+
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-text">
+
+<h1>
+Beauty That <span>Feels Luxurious</span>
+</h1>
+
+<p>
+Discover premium makeup and skincare products with a luxury shopping experience.
+</p>
+
+<div class="hero-btns">
+
+<button class="primary">
+Shop Collection
+</button>
+
+<button class="secondary">
+Trending Products
+</button>
+
+</div>
+
+</div>
+
+<div class="hero-image">
+
+<img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1600&auto=format&fit=crop">
+
+</div>
+
+</section>
+
+<!-- PRODUCTS -->
+
+<section class="section" id="products">
+
+<h1 class="title">Top Beauty Picks</h1>
+
+<p class="subtitle">
+Explore luxury beauty essentials and makeup products.
+</p>
+
+<div class="search-area">
+
+<input 
+type="text"
+id="searchInput"
+placeholder="Search makeup products..."
+onkeyup="filterProducts()"
+>
+
+<select id="categorySelect" onchange="filterProducts()">
+
+<option value="all">All Categories</option>
+<option value="lipstick">Lipsticks</option>
+<option value="skincare">Skincare</option>
+<option value="perfume">Perfumes</option>
+<option value="foundation">Foundation</option>
+<option value="eyes">Eye Makeup</option>
+
+</select>
+
+</div>
+
+<div class="product-grid" id="productGrid"></div>
+
+</section>
+
+<!-- CART -->
+
+<div class="cart-panel" id="cartPanel">
+
+<button class="close-cart" onclick="closeCart()">
+Close
+</button>
+
+<h2>Your Cart</h2>
+
+<div id="cartItems"></div>
+
+</div>
+
+<footer>
+© 2026 LuxeAura Beauty
+</footer>
+
+<script>
+
+/* PRODUCTS */
+
+const products=[
+
+{
+name:'Velvet Matte Lipstick',
+category:'lipstick',
+price:'₹1299',
+image:'https://www.pngkit.com/png/detail/25-253071_velvet-lipstick.png'
+},
+
+{
+name:'Rose Nude Lipstick',
+category:'lipstick',
+price:'₹999',
+image:'https://images.unsplash.com/photo-1586495777744-4413f21062fa'
+},
+
+{
+name:'Cherry Glow Lipstick',
+category:'lipstick',
+price:'₹1499',
+image:'https://images.unsplash.com/photo-1612817288484-6f916006741a'
+},
+
+{
+name:'Hydra Skin Serum',
+category:'skincare',
+price:'₹1899',
+image:'https://images.unsplash.com/photo-1620916566398-39f1143ab7be'
+},
+
+{
+name:'Vitamin C Cream',
+category:'skincare',
+price:'₹1399',
+image:'https://images.unsplash.com/photo-1625772452859-1c03d5bf1137'
+},
+
+{
+name:'Luxury Night Cream',
+category:'skincare',
+price:'₹2199',
+image:'https://images.unsplash.com/photo-1556228578-8c89e6adf883'
+},
+
+{
+name:'Glow Foundation',
+category:'foundation',
+price:'₹1799',
+image:'https://images.unsplash.com/photo-1596462502278-27bfdc403348'
+},
+
+
+{
+name:'Radiant Base Foundation',
+category:'foundation',
+price:'₹1999',
+image:'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9'
+},
+
+{
+name:'Midnight Perfume',
+category:'perfume',
+price:'₹3499',
+image:'https://images.unsplash.com/photo-1541643600914-78b084683601'
+},
+{
+name:'Blush Bloom Perfume',
+category:'perfume',
+price:'₹2999',
+image:'https://images.unsplash.com/photo-1592945403244-b3fbafd7f539'
+},
+
+{name:'Smokey Eye Palette',category:'eyes',price:'₹1899',image:'https://images.unsplash.com/photo-1512496015851-a90fb38ba796'},
+{name:'Golden Shimmer Palette',category:'eyes',price:'₹2199',image:"https://images.unsplash.com/photo-1526047932273-341f2a7631f9"},
+{name:'Peach Lip Gloss',category:'lipstick',price:'₹899',image:"https://images.unsplash.com/photo-1625093742435-6fa192b6fb10"},
+{name:'Rose Face Mist',category:'skincare',price:'₹899',image:"https://images.unsplash.com/photo-1556228720-195a672e8a03"},
+{name:'Hydrating Toner',category:'skincare',price:'₹999',image:"https://images.unsplash.com/photo-1571781926291-c477ebfd024b"},
+{name:'Soft Matte Blush',category:'foundation',price:'₹1099',image:"https://images.unsplash.com/photo-1583001931096-959e9a1a6223"},
+{name:'Diamond Highlighter',category:'foundation',price:'₹1599',image:"https://images.unsplash.com/photo-1619451334792-150fd785ee74"},
+{name:'Cherry Lip Oil',category:'lipstick',price:'₹899',image:"https://images.unsplash.com/photo-1625093742435-6fa192b6fb10"},
+{name:'Beauty Blender',category:'foundation',price:'₹599',image:"https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9"},
+{name:'Luxury Concealer',category:'foundation',price:'₹1399',image:"https://images.unsplash.com/photo-1599733594230-6b823276abcc"},
+{name:'Hydra Lip Balm',category:'lipstick',price:'₹499',image:"https://images.unsplash.com/photo-1619451334792-150fd785ee74"},
+{name:'Crystal Serum',category:'skincare',price:'₹2499',image:"https://images.unsplash.com/photo-1620916566398-39f1143ab7be"},
+{name:'Ocean Breeze Perfume',category:'perfume',price:'₹3199',image:"https://images.unsplash.com/photo-1541643600914-78b084683601"},
+{name:'Nude Lip Kit',category:'lipstick',price:'₹1799',image:"https://images.unsplash.com/photo-1586495777744-4413f21062fa"},
+{name:'Matte Fix Spray',category:'foundation',price:'₹999',image:"https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9"},
+{name:'Rose Cleanser',category:'skincare',price:'₹799',image:"https://images.unsplash.com/photo-1556228720-195a672e8a03"},
+{name:'Golden Lipstick',category:'lipstick',price:'₹1499',image:"https://images.unsplash.com/photo-1612817288484-6f916006741a"},
+{name:'Berry Lip Tint',category:'lipstick',price:'₹999',image:"https://images.unsplash.com/photo-1625093742435-6fa192b6fb10"},
+{name:'Luxury Sunscreen',category:'skincare',price:'₹1299',image:"https://images.unsplash.com/photo-1556228578-8c89e6adf883"},
+{name:'Pearl Foundation',category:'foundation',price:'₹1899',image:"https://images.unsplash.com/photo-1596462502278-27bfdc403348"},
+{name:'Dream Perfume',category:'perfume',price:'₹3599',image:"https://images.unsplash.com/photo-1592945403244-b3fbafd7f539"},
+{name:'Galaxy Eye Palette',category:'eyes',price:'₹2499',image:"https://images.unsplash.com/photo-1512496015851-a90fb38ba796"},
+{name:'Silk Lip Gloss',category:'lipstick',price:'₹899',image:"https://images.unsplash.com/photo-1625093742435-6fa192b6fb10"},
+{name:'Hydra Moisturizer',category:'skincare',price:'₹1499' ,image:"https://images.unsplash.com/photo-1556228578-8c89e6adf883"},
+{name:'Classic Perfume',category:'perfume',price:'₹2899',image:"https://images.unsplash.com/photo-1590736969955-71cc94901144"},
+];
+
+/* CREATE PRODUCTS */
+
+const grid=document.getElementById('productGrid');
+
+products.forEach(product=>{
+
+const card=document.createElement('div');
+
+card.className='product-card';
+
+card.dataset.category=product.category;
+
+card.innerHTML=`
+
+<div class="badge">
+Trending
+</div>
+
+<img src="${product.image}">
+
+<div class="product-content">
+
+<div class="product-top">
+
+<h2>${product.name}</h2>
+
+<div class="price">${product.price}</div>
+
+</div>
+
+<p>
+Premium beauty essential designed for elegant makeup routines and glowing skincare looks.
+</p>
+
+<div class="tags">
+
+<span>✨ Luxury</span>
+<span>💖 Beauty</span>
+<span>🔥 Viral</span>
+
+</div>
+
+<button class="buy-btn" onclick="addToCart('${product.name}','${product.price}')">
+Add To Cart
+</button>
+
+</div>
+
+`;
+
+grid.appendChild(card);
+
+});
+
+/* SEARCH */
+
+function filterProducts(){
+
+let search=document.getElementById('searchInput').value.toLowerCase();
+
+let category=document.getElementById('categorySelect').value;
+
+let cards=document.querySelectorAll('.product-card');
+
+cards.forEach(card=>{
+
+let title=card.querySelector('h2').innerText.toLowerCase();
+
+let cat=card.dataset.category;
+
+let matchesSearch=title.includes(search);
+
+let matchesCategory=
+category==='all' || category===cat;
+
+if(matchesSearch && matchesCategory){
+
+card.style.display='block';
+
+}else{
+
+card.style.display='none';
+
+}
+
+});
+
+}
+
+/* CART */
+
+let cart=0;
+
+function addToCart(name,price){
+
+cart++;
+
+document.getElementById('cartCount').innerText=cart;
+
+let item=document.createElement('div');
+
+item.className='cart-item';
+
+item.innerHTML=`
+<h3>${name}</h3>
+<p>${price}</p>
+`;
+
+document.getElementById('cartItems').appendChild(item);
+
+}
+
+/* OPEN CART */
+
+function openCart(){
+
+document.getElementById('cartPanel').classList.add('active');
+
+}
+
+function closeCart(){
+
+document.getElementById('cartPanel').classList.remove('active');
+
+}
+
+/* MOBILE MENU */
+
+function toggleMenu(){
+
+document.querySelector('.nav-links').classList.toggle('active');
+
+}
+
+</script>
+<marquee>Disclaimer:This website is meant only for the demonstration of web designs made by me and is not being deployed or given backend support to function and the images may not be accurate for the item mentioned!</marquee>
+</body>
+</html>

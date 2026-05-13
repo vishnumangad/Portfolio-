@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vishnu | Futuristic Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+  *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#050505;
+    color:white;
+    overflow-x:hidden;
+}
+
+body::before{
+    content:'';
+    position:fixed;
+    width:600px;
+    height:600px;
+    background:rgba(0,255,255,0.08);
+    filter:blur(140px);
+    top:-200px;
+    left:-200px;
+    z-index:-1;
+}
+
+body::after{
+    content:'';
+    position:fixed;
+    width:600px;
+    height:600px;
+    background:rgba(140,0,255,0.08);
+    filter:blur(140px);
+    bottom:-200px;
+    right:-200px;
+    z-index:-1;
+}
+
+.cursor-glow{
+    position:fixed;
+    width:300px;
+    height:300px;
+    background:rgba(0,255,255,0.08);
+    border-radius:50%;
+    filter:blur(100px);
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+    z-index:999;
+}
+
+header{
+    position:fixed;
+    width:100%;
+    top:0;
+    z-index:1000;
+    backdrop-filter:blur(15px);
+    background:rgba(0,0,0,0.2);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+}
+
+nav{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:20px;
+}
+
+.logo{
+    font-size:2rem;
+    letter-spacing:6px;
+    font-weight:700;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:40px;
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#00ffff;
+}
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    text-align:center;
+    padding:100px 20px;
+}
+
+.hero-bg{
+    position:absolute;
+    width:500px;
+    height:500px;
+    background:linear-gradient(to right,#00ffff,#8a2be2);
+    border-radius:50%;
+    filter:blur(180px);
+    opacity:0.2;
+    animation:pulse 6s infinite;
+}
+
+@keyframes pulse{
+    0%{transform:scale(1);}
+    50%{transform:scale(1.2);}
+    100%{transform:scale(1);}
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+}
+
+.tag{
+    letter-spacing:8px;
+    color:#00ffff;
+    margin-bottom:20px;
+}
+
+.hero h1{
+    font-size:7rem;
+    line-height:1;
+    background:linear-gradient(to right,#ffffff,#7df9ff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color:transparent;
+}
+
+.description{
+    max-width:750px;
+    margin:30px auto;
+    color:#aaa;
+    line-height:1.8;
+    font-size:1.1rem;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.primary-btn,
+.secondary-btn,
+.project-card button,
+.contact-btn{
+    padding:15px 35px;
+    border:none;
+    border-radius:15px;
+    font-size:1rem;
+    cursor:pointer;
+    transition:0.4s;
+}
+
+.primary-btn,
+.contact-btn,
+.project-card button{
+    background:linear-gradient(to right,#00ffff,#8a2be2);
+    color:black;
+    font-weight:700;
+}
+
+.secondary-btn{
+    background:transparent;
+    border:1px solid rgba(255,255,255,0.2);
+    color:white;
+}
+
+.primary-btn:hover,
+.secondary-btn:hover,
+.project-card button:hover,
+.contact-btn:hover{
+    transform:translateY(-5px) scale(1.05);
+}
+
+.glass{
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    backdrop-filter:blur(20px);
+}
+
+.floating-card{
+    position:absolute;
+    right:8%;
+    bottom:15%;
+    padding:25px;
+    border-radius:20px;
+    animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%{transform:translateY(0px);}
+    50%{transform:translateY(-15px);}
+    100%{transform:translateY(0px);}
+}
+
+.projects{
+    padding:120px 20px;
+    max-width:1300px;
+    margin:auto;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.section-title p{
+    color:#00ffff;
+    letter-spacing:6px;
+    margin-bottom:10px;
+}
+
+.section-title h2{
+    font-size:4rem;
+}
+
+.project-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:35px;
+}
+
+.project-card{
+    position:relative;
+    padding:35px;
+    border-radius:25px;
+    overflow:hidden;
+    transition:0.5s;
+}
+
+.project-card:hover{
+    transform:translateY(-10px) scale(1.03);
+    border-color:#00ffff;
+}
+
+.project-glow{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to bottom right,rgba(0,255,255,0.1),rgba(138,43,226,0.1));
+    opacity:0;
+    transition:0.5s;
+    pointer-events: none;
+}
+
+.project-card:hover .project-glow{
+    opacity:1;
+}
+
+.project-card h3{
+    font-size:2rem;
+    margin-bottom:15px;
+    position:relative;
+}
+
+.project-card p{
+    color:#aaa;
+    line-height:1.7;
+    position:relative;
+}
+.project-card button
+.project-card a{
+  position:relative;
+  z-index: 10;
+
+}
+.tech{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin:25px 0;
+    position:relative;
+}
+
+.tech span{
+    padding:10px 18px;
+    background:rgba(255,255,255,0.05);
+    border-radius:50px;
+    border:1px solid rgba(255,255,255,0.08);
+    font-size:0.9rem;
+}
+
+.about{
+    padding:120px 20px;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:60px;
+    align-items:center;
+    max-width:1200px;
+    margin:auto;
+}
+
+.about-left p:first-child{
+    color:#00ffff;
+    letter-spacing:5px;
+    margin-bottom:20px;
+}
+
+.about-left h2{
+    font-size:4rem;
+    margin-bottom:30px;
+}
+
+.about-text{
+    color:#aaa;
+    line-height:1.9;
+}
+
+.about-right{
+    padding:40px;
+    border-radius:25px;
+}
+
+.skill{
+    margin-bottom:30px;
+}
+
+.skill p{
+    margin-bottom:10px;
+}
+
+.bar{
+    width:100%;
+    height:12px;
+    background:rgba(255,255,255,0.08);
+    border-radius:50px;
+    overflow:hidden;
+}
+
+.fill{
+    height:100%;
+    border-radius:50px;
+    background:linear-gradient(to right,#00ffff,#8a2be2);
+}
+
+.fill1{width:95%;}
+.fill2{width:98%;}
+.fill3{width:92%;}
+
+.contact{
+    padding:140px 20px;
+    text-align:center;
+}
+
+.contact p{
+    color:#00ffff;
+    letter-spacing:6px;
+}
+
+.contact h2{
+    font-size:4rem;
+    margin:20px 0 40px;
+}
+
+footer{
+    padding:30px;
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,0.08);
+    color:#777;
+}
+
+@media(max-width:900px){
+
+    .hero h1{
+        font-size:4rem;
+    }
+
+    .section-title h2,
+    .about-left h2,
+    .contact h2{
+        font-size:2.8rem;
+    }
+
+    nav ul{
+        gap:20px;
+    }
+
+    .floating-card{
+        display:none;
+    }
+
+}
+
+@media(max-width:600px){
+
+    nav{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero h1{
+        font-size:3rem;
+    }
+
+    .buttons{
+        flex-direction:column;
+        align-items:center;
+    }
+
+}
+  </style>
+  <script>
+  const cursorGlow = document.querySelector('.cursor-glow');
+
+window.addEventListener('mousemove', (e) => {
+  cursorGlow.style.left = e.clientX + 'px';
+  cursorGlow.style.top = e.clientY + 'px';
+});
+
+const cards = document.querySelectorAll('.project-card');
+
+cards.forEach(card => {
+
+  card.addEventListener('mousemove', (e) => {
+
+    const rect = card.getBoundingClientRect();
+
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    card.style.transform = `rotateX(${-(y - rect.height / 2) / 20}deg)
+                            rotateY(${(x - rect.width / 2) / 20}deg)
+                            scale(1.03)`;
+
+  });
+
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'rotateX(0) rotateY(0) scale(1)';
+  });
+
+});
+
+window.addEventListener('scroll', () => {
+
+  const navbar = document.querySelector('header');
+
+  if(window.scrollY > 50){
+    navbar.style.background = 'rgba(0,0,0,0.5)';
+  }
+  else{
+    navbar.style.background = 'rgba(0,0,0,0.2)';
+  }
+
+});
+  </script>
+</head>
+<body>
+
+  <div class="cursor-glow"></div>
+
+  <header>
+    <nav>
+      <h1 class="logo">VISHNU</h1>
+
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+
+    <div class="hero-bg"></div>
+
+    <div class="hero-content">
+      <p class="tag">FUTURISTIC WEB DEVELOPER</p>
+
+      <h1>MY
+        PORTFOLIO
+      </h1>
+
+      <p class="description">
+        Creating futuristic digital experiences with stunning animations,
+        modern UI designs, cinematic visuals and immersive interactions.
+      </p>
+
+      <div class="buttons">
+        <a href="#projects"><button class="primary-btn">Explore Projects</button></a>
+      </div>
+    </div>
+
+    <div class="floating-card glass">
+      <h3>Frontend Developer</h3>
+      <p>Creative UI / UX</p>
+    </div>
+
+  </section>
+
+  <section class="projects" id="projects">
+
+    <div class="section-title">
+      <p>PORTFOLIO</p>
+      <h2>Featured Projects</h2>
+    </div>
+
+    <div class="project-grid">
+
+      <div class="project-card glass">
+        <div class="project-glow"></div>
+
+        <h3>Hotel website</h3>
+
+        <p>
+          A complete web page which frames every details of a restaurant.
+        </p>
+
+        <div class="tech">
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>JavaScript</span>
+
+        </div>
+
+        <a href="hotel.html"><button class="project-btn">View project</button></a>
+      </div>
+
+      <div class="project-card glass">
+        <div class="project-glow"></div>
+
+        <h3>Beauty products Shop</h3>
+
+        <p>
+        A web page displaying a wide range of beauty products meant for use by women.
+        </p>
+
+        <div class="tech">
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>JavaScript</span>
+        </div>
+
+        <a href="shop.html"><button>View Project</button></a>
+      </div>
+
+      <div class="project-card glass">
+        <div class="project-glow"></div>
+
+        <h3>All in One tools page</h3>
+
+        <p>
+         Many powerful tools deployed at a single page!
+        </p>
+
+        <div class="tech">
+          <span>HTML</span>
+          <span>CSS</span>
+          <span>JavaScript</span>
+
+        </div>
+
+        <a href="tools.html"><button>View project</button></a>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="about" id="about">
+
+    <div class="about-left">
+      <p>ABOUT ME</p>
+      <h2>Building The Future Of Web Experiences</h2>
+
+      <p class="about-text">
+        I create modern, highly immersive and futuristic websites
+        using advanced animations, dark cinematic themes and interactive UI effects.
+      </p>
+    </div>
+
+    <div class="about-right glass">
+
+      <div class="skill">
+        <p>Frontend Development</p>
+        <div class="bar">
+          <div class="fill fill1"></div>
+        </div>
+      </div>
+
+      <div class="skill">
+        <p>Creative Animations</p>
+        <div class="bar">
+          <div class="fill fill2"></div>
+        </div>
+      </div>
+
+      <div class="skill">
+        <p>UI / UX Design</p>
+        <div class="bar">
+          <div class="fill fill3"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+
+    <p>CONTACT</p>
+    <h2>Let's Create Something Incredible</h2>
+
+    <button class="contact-btn">Email Me</button>
+
+  </section>
+
+  <footer>
+    <p>© 2026 Vishnu Portfolio</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

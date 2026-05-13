@@ -1,0 +1,1075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Noir Malabar | Luxury Restaurant Kerala</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#050505;
+color:white;
+overflow-x:hidden;
+}
+
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+width:10px;
+}
+
+::-webkit-scrollbar-thumb{
+background:linear-gradient(#facc15,#ff6600);
+border-radius:20px;
+}
+
+/* BACKGROUND GLOW */
+
+.glow1,
+.glow2{
+position:fixed;
+border-radius:50%;
+filter:blur(100px);
+z-index:-1;
+}
+
+.glow1{
+width:400px;
+height:400px;
+background:#ff990033;
+top:-100px;
+right:-100px;
+animation:float1 10s infinite alternate;
+}
+
+.glow2{
+width:350px;
+height:350px;
+background:#ff660022;
+bottom:-100px;
+left:-100px;
+animation:float2 8s infinite alternate;
+}
+
+@keyframes float1{
+100%{
+transform:translateY(60px);
+}
+}
+
+@keyframes float2{
+100%{
+transform:translateY(-60px);
+}
+}
+
+/* NAVBAR */
+
+nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+padding:18px 7%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(0,0,0,0.55);
+backdrop-filter:blur(15px);
+z-index:999;
+border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.logo{
+font-size:32px;
+font-weight:800;
+background:linear-gradient(to right,#facc15,#ff6600);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.nav-links{
+display:flex;
+gap:35px;
+list-style:none;
+}
+
+.nav-links a{
+text-decoration:none;
+color:white;
+font-size:15px;
+position:relative;
+}
+
+.nav-links a::after{
+content:'';
+position:absolute;
+left:0;
+bottom:-5px;
+width:0%;
+height:2px;
+background:#facc15;
+transition:0.4s;
+}
+
+.nav-links a:hover::after{
+width:100%;
+}
+
+.book-btn{
+padding:14px 28px;
+border:none;
+border-radius:50px;
+background:linear-gradient(45deg,#facc15,#ff6600);
+color:white;
+font-weight:700;
+cursor:pointer;
+transition:0.4s;
+box-shadow:0 0 30px #ff990044;
+}
+
+.book-btn:hover{
+transform:translateY(-4px);
+}
+
+.menu-toggle{
+display:none;
+font-size:30px;
+cursor:pointer;
+}
+
+/* PAGE */
+
+.page{
+display:none;
+min-height:100vh;
+padding-top:100px;
+animation:fade 0.8s ease;
+}
+
+.active{
+display:block;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translateY(30px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+/* HERO */
+
+.hero{
+height:100vh;
+background:
+linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.75)),
+url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1800&auto=format&fit=crop');
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+padding:20px;
+position:relative;
+overflow:hidden;
+}
+
+.hero::before{
+content:'';
+position:absolute;
+width:600px;
+height:600px;
+background:radial-gradient(circle,#facc1522,transparent 70%);
+border-radius:50%;
+animation:pulse 5s infinite;
+}
+
+@keyframes pulse{
+0%{
+transform:scale(0.7);
+opacity:0.7;
+}
+100%{
+transform:scale(1.5);
+opacity:0;
+}
+}
+
+.hero-content{
+position:relative;
+z-index:2;
+}
+
+.hero-content h1{
+font-size:95px;
+font-weight:800;
+line-height:1;
+margin-bottom:20px;
+}
+
+.hero-content span{
+background:linear-gradient(to right,#facc15,#ff6600);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero-content p{
+max-width:750px;
+margin:auto;
+line-height:2;
+font-size:18px;
+opacity:0.85;
+}
+
+.hero-buttons{
+margin-top:40px;
+display:flex;
+gap:20px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.hero-buttons button{
+padding:16px 34px;
+border:none;
+border-radius:50px;
+font-size:16px;
+font-weight:600;
+cursor:pointer;
+transition:0.4s;
+}
+
+.primary{
+background:linear-gradient(45deg,#facc15,#ff6600);
+color:white;
+}
+
+.secondary{
+background:rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.1);
+color:white;
+backdrop-filter:blur(10px);
+}
+
+.hero-buttons button:hover{
+transform:translateY(-5px);
+}
+
+/* COMMON */
+
+.container{
+padding:80px 8%;
+}
+
+.title{
+font-size:60px;
+text-align:center;
+font-weight:800;
+margin-bottom:15px;
+}
+
+.subtitle{
+text-align:center;
+max-width:750px;
+margin:auto;
+opacity:0.7;
+line-height:1.9;
+margin-bottom:70px;
+}
+
+/* SEARCH */
+
+.search-box{
+display:flex;
+justify-content:center;
+margin-bottom:50px;
+}
+
+.search-box input{
+width:100%;
+max-width:500px;
+padding:18px 25px;
+border:none;
+outline:none;
+border-radius:50px;
+background:rgba(255,255,255,0.06);
+backdrop-filter:blur(12px);
+color:white;
+font-size:16px;
+border:1px solid rgba(255,255,255,0.08);
+transition:0.4s;
+}
+
+.search-box input:focus{
+border:1px solid #facc15;
+box-shadow:0 0 25px #facc1544;
+}
+
+.search-box input::placeholder{
+color:#aaa;
+}
+
+/* FOOD GRID */
+
+.food-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:35px;
+}
+
+.food-card{
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.05);
+border-radius:30px;
+overflow:hidden;
+backdrop-filter:blur(15px);
+transition:0.5s;
+}
+
+.food-card:hover{
+transform:translateY(-12px);
+box-shadow:0 0 40px #00000088;
+}
+
+.food-card img{
+width:100%;
+height:240px;
+object-fit:cover;
+transition:0.5s;
+}
+
+.food-card:hover img{
+transform:scale(1.08);
+}
+
+.food-content{
+padding:25px;
+}
+
+.food-top{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:12px;
+}
+
+.food-top h2{
+font-size:28px;
+}
+
+.price{
+font-size:22px;
+font-weight:700;
+color:#facc15;
+}
+
+.food-content p{
+opacity:0.75;
+line-height:1.8;
+margin-bottom:20px;
+}
+
+.tags{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+}
+
+.tags span{
+padding:8px 14px;
+border-radius:30px;
+background:#ffffff10;
+font-size:13px;
+}
+
+/* GALLERY */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:20px;
+}
+
+.gallery img{
+width:100%;
+height:280px;
+object-fit:cover;
+border-radius:25px;
+transition:0.5s;
+filter:brightness(0.8);
+}
+
+.gallery img:hover{
+transform:scale(1.05);
+filter:brightness(1);
+}
+
+/* CONTACT */
+
+.contact-box{
+max-width:700px;
+margin:auto;
+padding:45px;
+border-radius:30px;
+background:rgba(255,255,255,0.04);
+backdrop-filter:blur(15px);
+border:1px solid rgba(255,255,255,0.05);
+}
+
+.contact-box input,
+.contact-box textarea{
+width:100%;
+padding:18px;
+margin:15px 0;
+border:none;
+border-radius:18px;
+background:#111;
+color:white;
+outline:none;
+}
+
+.contact-box button{
+width:100%;
+padding:18px;
+border:none;
+border-radius:20px;
+background:linear-gradient(45deg,#facc15,#ff6600);
+color:white;
+font-weight:700;
+cursor:pointer;
+font-size:17px;
+}
+
+/* FOOTER */
+
+footer{
+padding:35px;
+text-align:center;
+background:#000;
+margin-top:60px;
+opacity:0.7;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.hero-content h1{
+font-size:58px;
+}
+
+.title{
+font-size:42px;
+}
+
+.menu-toggle{
+display:block;
+}
+
+.nav-links{
+position:absolute;
+top:100%;
+left:0;
+width:100%;
+background:#0a0a0a;
+flex-direction:column;
+padding:25px;
+display:none;
+gap:25px;
+border-bottom:1px solid rgba(255,255,255,0.05);
+}
+
+.nav-links.active{
+display:flex;
+}
+
+.book-btn{
+display:none;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="glow1"></div>
+<div class="glow2"></div>
+
+<!-- NAVBAR -->
+
+<nav>
+
+<div class="logo">NOIR MALABAR</div>
+
+<ul class="nav-links" id="navLinks">
+<li><a href="#" onclick="showPage('home')">Home</a></li>
+<li><a href="#" onclick="showPage('menu')">Menu</a></li>
+<li><a href="#" onclick="showPage('gallery')">Gallery</a></li>
+<li><a href="#" onclick="showPage('contact')">Contact</a></li>
+</ul>
+
+<button class="book-btn">Reserve Table</button>
+
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+</nav>
+
+<!-- HOME -->
+
+<div class="page active" id="home">
+
+<section class="hero">
+
+<div class="hero-content">
+
+<h1>Luxury <span>Dining</span></h1>
+
+<p>
+Noir Malabar is a futuristic luxury restaurant from Kerala
+with cinematic interiors and unforgettable premium flavors.
+</p>
+
+<div class="hero-buttons">
+
+<button class="primary" onclick="showPage('menu')">
+Explore Menu
+</button>
+
+<button class="secondary" onclick="showPage('contact')">
+Reserve Now
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+<!-- MENU -->
+
+<div class="page" id="menu">
+
+<div class="container">
+
+<h1 class="title">Signature Dishes</h1>
+
+<p class="subtitle">
+Search and explore our luxury dishes.
+</p>
+
+<div class="search-box">
+<input 
+type="text"
+id="searchInput"
+placeholder="Search food..."
+onkeyup="searchFood()"
+>
+</div>
+
+<div class="food-grid">
+
+<!-- AL FAHAM -->
+
+<div class="food-card">
+<img src="alfaham.jpg">
+<div class="food-content">
+<div class="food-top">
+<h2>Al Faham</h2>
+<div class="price">₹690</div>
+</div>
+<p>Slow grilled Arabian style chicken with creamy garlic sauce and kuboos.</p>
+<div class="tags">
+<span>🍗 Grill</span>
+<span>🔥 Bestseller</span>
+</div>
+</div>
+</div>
+
+<!-- PIZZA -->
+
+<div class="food-card">
+<img src="tandoori-pizza.webp">
+<div class="food-content">
+<div class="food-top">
+<h2>Luxury Pizza</h2>
+<div class="price">₹540</div>
+</div>
+<p>Stone baked premium pizza loaded with smoked cheese and herbs.</p>
+<div class="tags">
+<span>🍕 Italian</span>
+<span>🧀 Cheese</span>
+</div>
+</div>
+</div>
+
+<!-- BIRIYANI -->
+
+<div class="food-card">
+<img src="chicken-biryani-recipe-home-style.jpg">
+<div class="food-content">
+<div class="food-top">
+<h2>Malabar Biriyani</h2>
+<div class="price">₹420</div>
+</div>
+<p>Traditional Kerala dum biriyani layered with fragrant spices and meat.</p>
+<div class="tags">
+<span>🍚 Kerala</span>
+<span>🌶 Spicy</span>
+</div>
+</div>
+</div>
+
+<!-- BURGER -->
+
+<div class="food-card">
+<img src="beef-burger.jpg">
+<div class="food-content">
+<div class="food-top">
+<h2>Beef Burger</h2>
+<div class="price">₹380</div>
+</div>
+<p>Juicy beef patty with smoked cheese and signature Noir sauce.</p>
+<div class="tags">
+<span>🍔 Burger</span>
+<span>🔥 Grill</span>
+</div>
+</div>
+</div>
+
+<!-- CHICKEN MANDI -->
+
+<div class="food-card">
+<img src="CHHICKEN-MANDI-1-scaled.webp">
+<div class="food-content">
+<div class="food-top">
+<h2>Chicken Mandi</h2>
+<div class="price">₹740</div>
+</div>
+<p>Traditional Arabian mandi rice served with juicy charcoal grilled chicken.</p>
+<div class="tags">
+<span>🍗 Arabian</span>
+<span>🔥 Bestseller</span>
+</div>
+</div>
+</div>
+
+<!-- BEEF MANDI -->
+
+<div class="food-card">
+<img src="b mandi.jpg">
+<div class="food-content">
+<div class="food-top">
+<h2>Beef Mandi</h2>
+<div class="price">₹890</div>
+</div>
+<p>Slow cooked tender beef layered over fragrant mandi rice.</p>
+<div class="tags">
+<span>🥩 Beef</span>
+<span>⭐ Luxury</span>
+</div>
+</div>
+</div>
+
+<!-- MUTTON MANDI -->
+
+<div class="food-card">
+<img src="Mutton-Mandhi.png">
+<div class="food-content">
+<div class="food-top">
+<h2>Mutton Mandi</h2>
+<div class="price">₹990</div>
+</div>
+<p>Authentic mandi with soft juicy mutton and premium basmati rice.</p>
+<div class="tags">
+<span>🍖 Mutton</span>
+<span>🔥 Premium</span>
+</div>
+</div>
+</div>
+
+<!-- POROTTA -->
+
+<div class="food-card">
+<img src="pbf.jpg">
+<div class="food-content">
+<div class="food-top">
+<h2>Porotta & Beef</h2>
+<div class="price">₹320</div>
+</div>
+<p>Kerala style flaky porotta served with spicy beef roast.</p>
+<div class="tags">
+<span>🥩 Kerala</span>
+<span>🔥 Spicy</span>
+</div>
+</div>
+</div>
+
+<!-- APPAM -->
+
+<div class="food-card">
+<img src="appam.jpg">
+<div class="food-content">
+<div class="food-top">
+<h2>Appam & Stew</h2>
+<div class="price">₹280</div>
+</div>
+<p>Soft Kerala appam paired with creamy stew.</p>
+<div class="tags">
+<span>🥥 Coconut</span>
+<span>⭐ Traditional</span>
+</div>
+</div>
+</div>
+
+  <!-- ADD THESE BELOW THE LAST FOOD CARD INSIDE .food-grid -->
+
+<!-- CHICKEN CURRY -->
+
+<div class="food-card">
+
+<img src="chicken curry.jpg">
+
+<div class="food-content">
+
+<div class="food-top">
+<h2>Chicken Curry</h2>
+<div class="price">₹320</div>
+</div>
+
+<p>
+Traditional Kerala style chicken curry cooked in rich roasted spices
+and creamy coconut gravy.
+</p>
+
+<div class="tags">
+<span>🍗 Chicken</span>
+<span>🌶 Spicy</span>
+<span>🔥 Kerala</span>
+</div>
+
+</div>
+</div>
+
+<!-- BEEF CURRY -->
+
+<div class="food-card">
+
+<img src="beef-curry.jpg">
+
+<div class="food-content">
+
+<div class="food-top">
+<h2>Beef Curry</h2>
+<div class="price">₹390</div>
+</div>
+
+<p>
+Slow cooked Kerala beef curry infused with black pepper,
+curry leaves and traditional spices.
+</p>
+
+<div class="tags">
+<span>🥩 Beef</span>
+<span>🔥 Kerala</span>
+<span>🌶 Spicy</span>
+</div>
+
+</div>
+</div>
+
+<!-- MUTTON CURRY -->
+
+<div class="food-card">
+
+<img src="Mutton-Curry.jpg">
+
+<div class="food-content">
+
+<div class="food-top">
+<h2>Mutton Curry</h2>
+<div class="price">₹520</div>
+</div>
+
+<p>
+Tender mutton slow cooked in thick aromatic gravy
+with authentic Malabar spices.
+</p>
+
+<div class="tags">
+<span>🍖 Mutton</span>
+<span>⭐ Premium</span>
+<span>🔥 Hot</span>
+</div>
+
+</div>
+</div>
+
+<!-- CHICKEN FRY -->
+
+<div class="food-card">
+
+<img src="cfry.jpg">
+
+<div class="food-content">
+
+<div class="food-top">
+<h2>Chicken Fry</h2>
+<div class="price">₹340</div>
+</div>
+
+<p>
+Crispy spicy fried chicken coated with signature Kerala masala
+and curry leaf flavor.
+</p>
+
+<div class="tags">
+<span>🍗 Crispy</span>
+<span>🔥 Fry</span>
+<span>⭐ Bestseller</span>
+</div>
+
+</div>
+</div>
+
+<!-- BEEF FRY -->
+
+<div class="food-card">
+
+<img src="bfry.jpg">
+
+<div class="food-content">
+
+<div class="food-top">
+<h2>Beef Fry</h2>
+<div class="price">₹420</div>
+</div>
+
+<p>
+Kerala style beef fry roasted with coconut slices,
+pepper and curry leaves.
+</p>
+
+<div class="tags">
+<span>🥩 Beef</span>
+<span>🔥 Fry</span>
+<span>🌶 Kerala</span>
+</div>
+
+</div>
+</div>
+
+<!-- PRAWNS FRY -->
+
+<div class="food-card">
+
+<img src="prawns.jpg">
+
+<div class="food-content">
+
+<div class="food-top">
+<h2>Prawns Fry</h2>
+<div class="price">₹560</div>
+</div>
+
+<p>
+Golden fried prawns marinated in spicy coastal Kerala masala
+with crispy texture.
+</p>
+
+<div class="tags">
+<span>🦐 Seafood</span>
+<span>🔥 Crispy</span>
+<span>⭐ Coastal</span>
+</div>
+
+</div>
+</div>
+
+<!-- FISH FRY -->
+
+<div class="food-card">
+
+<img src="fish-fry.jpg">
+
+<div class="food-content">
+
+<div class="food-top">
+<h2>Fish Fry</h2>
+<div class="price">₹460</div>
+</div>
+
+<p>
+Fresh Kerala fish marinated in traditional spices
+and perfectly pan fried.
+</p>
+
+<div class="tags">
+<span>🐟 Fish</span>
+<span>🔥 Fry</span>
+<span>🌶 Kerala</span>
+</div>
+
+</div>
+</div>
+<!-- FRIED RICE -->
+
+<div class="food-card">
+<img src="friedrice.jpg">
+<div class="food-content">
+<div class="food-top">
+<h2>Chicken Fried Rice</h2>
+<div class="price">₹290</div>
+</div>
+<p>Wok tossed fried rice with juicy chicken and oriental sauces.</p>
+<div class="tags">
+<span>🍚 Chinese</span>
+<span>🔥 Hot</span>
+</div>
+</div>
+</div>
+
+<!-- NOODLES -->
+
+<div class="food-card">
+<img src="noodles.jpg">
+<div class="food-content">
+<div class="food-top">
+<h2>Chicken Noodles</h2>
+<div class="price">₹260</div>
+</div>
+<p>Flavor packed chicken noodles tossed with vegetables and sauces.</p>
+<div class="tags">
+<span>🍜 Noodles</span>
+<span>🔥 Chinese</span>
+</div>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- GALLERY -->
+
+<div class="page" id="gallery">
+
+<div class="container">
+
+<h1 class="title">Restaurant Gallery</h1>
+
+<p class="subtitle">
+Inside the cinematic atmosphere of Noir Malabar.
+</p>
+
+<div class="gallery">
+
+<img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1600&auto=format&fit=crop">
+<img src="https://images.unsplash.com/photo-1552566626-52f8b828add9?q=80&w=1600&auto=format&fit=crop">
+<img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?q=80&w=1600&auto=format&fit=crop">
+<img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?q=80&w=1600&auto=format&fit=crop">
+
+</div>
+
+</div>
+
+</div>
+
+<!-- CONTACT -->
+
+<div class="page" id="contact">
+
+<div class="container">
+
+<h1 class="title">Reserve Your Table</h1>
+
+<div class="contact-box">
+
+<input type="text" placeholder="Your Name">
+<input type="email" placeholder="Email Address">
+<textarea rows="5" placeholder="Special Requests"></textarea>
+
+<button>Reserve Now</button>
+
+</div>
+
+</div>
+
+</div>
+<marquee background="red">Disclaimer:This website is meant only for the demonstration of web designs made by me and is not being deployed or given backend support to function!</marquee>
+<footer>
+© 2026 Noir Malabar • Luxury Restaurant • Kerala
+</footer>
+
+<script>
+
+function showPage(pageId){
+
+let pages=document.querySelectorAll('.page');
+
+pages.forEach(page=>{
+page.classList.remove('active');
+});
+
+document.getElementById(pageId).classList.add('active');
+
+window.scrollTo(0,0);
+
+document.getElementById("navLinks").classList.remove("active");
+
+}
+
+function toggleMenu(){
+
+document.getElementById("navLinks").classList.toggle("active");
+
+}
+
+function searchFood(){
+
+let input=document.getElementById("searchInput").value.toLowerCase();
+
+let cards=document.querySelectorAll(".food-card");
+
+cards.forEach(card=>{
+
+let title=card.querySelector("h2").innerText.toLowerCase();
+
+if(title.includes(input)){
+card.style.display="block";
+}
+else{
+card.style.display="none";
+}
+
+});
+
+}
+
+</script>
+
+</body>
+</html>
